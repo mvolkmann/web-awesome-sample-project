@@ -15,6 +15,10 @@ function configureRating() {
   // This causes the wa-rating component to use hearts instead of stars.
   const rating = document.getElementById("rating");
   rating.getSymbol = () => '<wa-icon name="heart" variant="solid"></wa-icon>';
+  rating.addEventListener("change", () => {
+    const span = rating.nextElementSibling;
+    span.textContent = rating.value;
+  });
 }
 
 async function getMessage() {
@@ -65,6 +69,7 @@ function updateBadge() {
 window.onload = () => {
   // Find all the DOM elements we need to access.
   badgeSwitch = document.getElementById("badge-switch");
+  const colorRadio = document.getElementById("color-radio");
   const dateInput = document.getElementById("date-input");
   drawerButton = document.getElementById("drawer-button");
   relativeTime = document.getElementById("relative-time");
@@ -76,6 +81,10 @@ window.onload = () => {
   buttonBadge = viewButton.querySelector("wa-badge");
 
   // Configure event handling.
+  colorRadio.addEventListener("change", () => {
+    const h1 = document.querySelector("h1");
+    h1.style.color = colorRadio.value;
+  });
   dateInput.addEventListener("change", (event) => {
     showRelativeTime(event.target.value);
   });

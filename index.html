@@ -15,6 +15,19 @@
   <body>
     <h1>Web Awesome Demo</h1>
 
+    <wa-radio-group
+      id="color-radio"
+      label="Select a heading color."
+      name="headingColor"
+      orientation="horizontal"
+      required
+      size="small"
+    >
+      <wa-radio value="red">Red</wa-radio>
+      <wa-radio value="green">Green</wa-radio>
+      <wa-radio value="blue">Blue</wa-radio>
+    </wa-radio-group>
+
     <div class="wa-align-items-end wa-gap-m">
       <wa-input
         id="date-input"
@@ -46,13 +59,16 @@
 
     <div>
       <div>Click a star to indicate how much you like Web Awesome.</div>
-      <wa-rating
-        id="rating"
-        label="Rating"
-        precision="0.5"
-        max="10"
-        size="large"
-      ></wa-rating>
+      <div class="row">
+        <wa-rating
+          id="rating"
+          label="Rating"
+          precision="0.5"
+          max="10"
+          size="large"
+        ></wa-rating>
+        <span>0</span>
+      </div>
     </div>
 
     <wa-dialog id="message-dialog" label="Messages" light-dismiss>
