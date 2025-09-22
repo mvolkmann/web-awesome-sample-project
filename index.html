@@ -33,13 +33,20 @@
       <wa-switch id="badge-switch" checked>Show Badge</wa-switch>
     </div>
 
+    <wa-button id="drawer-button" disabled>Open Drawer</wa-button>
+
     <wa-dialog id="message-dialog" label="Messages" light-dismiss>
-      <div>
-        Messages go here!
-      </div>
+      <div></div>
       <wa-button data-dialog="close" slot="footer" variant="brand">
         Close
       </wa-button>
     </wa-dialog>
+
+    <wa-drawer id="message-drawer" label="Messages" placement="bottom">
+      <div></div>
+      <wa-button data-drawer="close" slot="footer" variant="brand">
+        Close
+      </wa-button>
+    </wa-drawer>
   </body>
 </html>

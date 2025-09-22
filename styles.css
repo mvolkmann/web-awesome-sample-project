@@ -16,7 +16,12 @@ body {
   width: 10rem;
 }
 
-#message-dialog::part(footer) {
+#drawer-button {
+  margin-top: 1rem;
+}
+
+#message-dialog::part(footer),
+#message-drawer::part(footer) {
   padding-top: 1rem;
 }
 

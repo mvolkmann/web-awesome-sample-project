@@ -1,6 +1,8 @@
 let badgeSwitch;
 let buttonBadge;
+let drawerButton;
 let messageDialog;
+let messageDrawer;
 let messages = [];
 let relativeTime;
 let viewButton;
@@ -9,6 +11,23 @@ async function getMessage() {
   const url = "https://techy-api.vercel.app/api/text";
   const response = await fetch(url);
   return response.text();
+}
+
+function openContainer(container) {
+  const items = messages.map((message) => `<li>${message}</li>`);
+  const div = container.querySelector("div");
+  div.innerHTML = `<ol>${items.join("")}</ol>`;
+  messages = [];
+  updateBadge();
+  container.open = true;
+}
+
+function openDialog() {
+  openContainer(messageDialog);
+}
+
+function openDrawer() {
+  openContainer(messageDrawer);
 }
 
 function showRelativeTime(dateString) {
@@ -30,38 +49,35 @@ function updateBadge() {
   const checked = badgeSwitch.hasAttribute("checked");
   buttonBadge.style.display = checked && haveMessages ? "flex" : "none";
   viewButton.toggleAttribute("disabled", !haveMessages);
-}
-
-function viewMessages() {
-  const div = messageDialog.querySelector("div");
-  const items = messages.map((message) => `<li>${message}</li>`);
-  div.innerHTML = `<ol>${items.join("")}</ol>`;
-  messages = [];
-  updateBadge();
-  messageDialog.open = true;
+  drawerButton.toggleAttribute("disabled", !haveMessages);
 }
 
 window.onload = () => {
+  // Find all the DOM elements we need to access.
+  badgeSwitch = document.getElementById("badge-switch");
+  const dateInput = document.getElementById("date-input");
+  drawerButton = document.getElementById("drawer-button");
   relativeTime = document.getElementById("relative-time");
   messageDialog = document.getElementById("message-dialog");
+  messageDrawer = document.getElementById("message-drawer");
+  viewButton = document.getElementById("view-button");
+  buttonBadge = viewButton.querySelector("wa-badge");
 
-  const dateInput = document.getElementById("date-input");
+  // Configure event handling.
   dateInput.addEventListener("change", (event) => {
     showRelativeTime(event.target.value);
   });
+  viewButton.addEventListener("click", openDialog);
 
-  viewButton = document.getElementById("view-button");
-  viewButton.addEventListener("click", viewMessages);
-
-  badgeSwitch = document.getElementById("badge-switch");
-  buttonBadge = viewButton.querySelector("wa-badge");
-  updateBadge();
-
+  drawerButton.addEventListener("click", openDrawer);
   badgeSwitch.addEventListener("change", () => {
     badgeSwitch.toggleAttribute("checked");
     updateBadge();
   });
 
+  //updateBadge();
+
+  // Generate messages.
   setInterval(async () => {
     if (messages.length < 20) {
       messages.push((await getMessage()) + ".");
