@@ -22,14 +22,6 @@ function openContainer(container) {
   container.open = true;
 }
 
-function openDialog() {
-  openContainer(messageDialog);
-}
-
-function openDrawer() {
-  openContainer(messageDrawer);
-}
-
 function showRelativeTime(dateString) {
   const date = new Date(dateString);
   const now = new Date();
@@ -67,17 +59,16 @@ window.onload = () => {
   dateInput.addEventListener("change", (event) => {
     showRelativeTime(event.target.value);
   });
-  viewButton.addEventListener("click", openDialog);
-
-  drawerButton.addEventListener("click", openDrawer);
+  viewButton.addEventListener("click", () => openContainer(messageDialog));
+  drawerButton.addEventListener("click", () => openContainer(messageDrawer));
   badgeSwitch.addEventListener("change", () => {
     badgeSwitch.toggleAttribute("checked");
     updateBadge();
   });
 
-  //updateBadge();
+  updateBadge();
 
-  // Generate messages.
+  // Generate up to 20 messages.
   setInterval(async () => {
     if (messages.length < 20) {
       messages.push((await getMessage()) + ".");
