@@ -1,0 +1,45 @@
+<html class="wa-theme-default wa-palette-default wa-brand-blue"></html>
+  <head>
+    <title>Web Awesome Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://early.webawesome.com/webawesome@3.0.0-beta.6/dist/styles/webawesome.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      type="module"
+      src="https://early.webawesome.com/webawesome@3.0.0-beta.6/dist/webawesome.loader.js"
+    ></script>
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <h1>Web Awesome Demo</h1>
+
+    <div class="wa-align-items-end wa-gap-m">
+      <wa-input
+        id="date-input"
+        label="Dentist Appointment"
+        placeholder="date"
+        type="date"
+      ></wa-input>
+      <wa-relative-time id="relative-time"></wa-relative-time>
+    </div>
+
+    <div id="button-container" class="wa-align-items-center wa-gap-xl">
+      <wa-button id="view-button" disabled>
+        View Messages
+        <wa-badge attention="pulse" variant="danger" pill></wa-badge>
+      </wa-button>
+      <wa-switch id="badge-switch" checked>Show Badge</wa-switch>
+    </div>
+
+    <wa-dialog id="message-dialog" label="Messages" light-dismiss>
+      <div>
+        Messages go here!
+      </div>
+      <wa-button data-dialog="close" slot="footer" variant="brand">
+        Close
+      </wa-button>
+    </wa-dialog>
+  </body>
+</html>

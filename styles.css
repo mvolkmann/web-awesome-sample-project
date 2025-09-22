@@ -1,0 +1,25 @@
+#badge-switch {
+  --thumb-size: 15px; /* default seems too small */
+}
+
+body {
+  background-color: aliceblue;
+  padding: 2rem;
+}
+
+#button-container {
+  margin-top: 2rem;
+}
+
+#date-input {
+  display: inline-flex;
+  width: 10rem;
+}
+
+#message-dialog::part(footer) {
+  padding-top: 1rem;
+}
+
+#relative-time {
+  display: none;
+}
