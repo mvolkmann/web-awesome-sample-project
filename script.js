@@ -1,9 +1,13 @@
+const MAX_MESSAGES = 20;
+
 let badgeSwitch;
 let buttonBadge;
 let drawerButton;
 let messageDialog;
 let messageDrawer;
 let messages = [];
+let progressBar;
+let progressRing;
 let relativeTime;
 let viewButton;
 
@@ -45,6 +49,11 @@ function updateBadge() {
   buttonBadge.style.display = checked && haveMessages ? "flex" : "none";
   viewButton.toggleAttribute("disabled", !haveMessages);
   drawerButton.toggleAttribute("disabled", !haveMessages);
+  const percentComplete = (100 * messages.length) / MAX_MESSAGES;
+  progressBar.setAttribute("value", percentComplete);
+  progressRing.setAttribute("value", percentComplete);
+  progressBar.textContent = `${percentComplete}%`;
+  progressRing.textContent = `${percentComplete}%`;
 }
 
 window.onload = () => {
@@ -55,6 +64,8 @@ window.onload = () => {
   relativeTime = document.getElementById("relative-time");
   messageDialog = document.getElementById("message-dialog");
   messageDrawer = document.getElementById("message-drawer");
+  progressBar = document.getElementById("progress-bar");
+  progressRing = document.getElementById("progress-ring");
   viewButton = document.getElementById("view-button");
   buttonBadge = viewButton.querySelector("wa-badge");
 
@@ -72,9 +83,9 @@ window.onload = () => {
 
   updateBadge();
 
-  // Generate up to 20 messages.
+  // Generate up to MAX_MESSAGES.
   setInterval(async () => {
-    if (messages.length < 20) {
+    if (messages.length < MAX_MESSAGES) {
       messages.push((await getMessage()) + ".");
       updateBadge();
     }

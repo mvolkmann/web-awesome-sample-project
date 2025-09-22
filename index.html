@@ -25,15 +25,24 @@
       <wa-relative-time id="relative-time"></wa-relative-time>
     </div>
 
-    <div id="button-container" class="wa-align-items-center wa-gap-xl">
-      <wa-button id="view-button" disabled>
+    <div class="wa-align-items-center wa-gap-xl">
+      <wa-button id="view-button" disabled size="small">
         View Messages
         <wa-badge attention="pulse" variant="danger" pill></wa-badge>
       </wa-button>
       <wa-switch id="badge-switch" checked>Show Badge</wa-switch>
     </div>
 
-    <wa-button id="drawer-button" disabled>Open Drawer</wa-button>
+    <div>
+      <wa-button id="drawer-button" disabled size="small">Open Drawer</wa-button>
+    </div>
+
+    <wa-progress-bar
+      id="progress-bar"
+      label="Message Progress"
+    ></wa-progress-bar>
+
+    <wa-progress-ring id="progress-ring"></wa-progress-ring>
 
     <wa-dialog id="message-dialog" label="Messages" light-dismiss>
       <div></div>
