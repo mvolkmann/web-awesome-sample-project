@@ -35,6 +35,12 @@ body {
   --track-width: 6px;
 }
 
+#rating {
+  --symbol-color: pink;
+  --symbol-color-active: red;
+  --symbol-spacing: 0.1rem;
+}
+
 #relative-time {
   display: none;
 }

@@ -11,6 +11,12 @@ let progressRing;
 let relativeTime;
 let viewButton;
 
+function configureRating() {
+  // This causes the wa-rating component to use hearts instead of stars.
+  const rating = document.getElementById("rating");
+  rating.getSymbol = () => '<wa-icon name="heart" variant="solid"></wa-icon>';
+}
+
 async function getMessage() {
   const url = "https://techy-api.vercel.app/api/text";
   const response = await fetch(url);
@@ -82,6 +88,8 @@ window.onload = () => {
   });
 
   updateBadge();
+
+  configureRating();
 
   // Generate up to MAX_MESSAGES.
   setInterval(async () => {
