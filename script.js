@@ -24,6 +24,8 @@ function openContainer(container) {
 
 function showRelativeTime(dateString) {
   const date = new Date(dateString);
+
+  // Update the time portion of the date to match the current time.
   const now = new Date();
   date.setHours(
     24 + now.getHours(),
@@ -31,6 +33,7 @@ function showRelativeTime(dateString) {
     now.getSeconds(),
     now.getMilliseconds()
   );
+
   relativeTime.setAttribute("date", date.toISOString());
   relativeTime.style.display = "inline-block";
 }
@@ -62,6 +65,7 @@ window.onload = () => {
   viewButton.addEventListener("click", () => openContainer(messageDialog));
   drawerButton.addEventListener("click", () => openContainer(messageDrawer));
   badgeSwitch.addEventListener("change", () => {
+    // Keep "checked" attribute in sync with state.
     badgeSwitch.toggleAttribute("checked");
     updateBadge();
   });
