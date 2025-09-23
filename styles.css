@@ -11,11 +11,6 @@ body {
   padding: 2rem;
 }
 
-#date-input {
-  display: inline-flex;
-  width: 10rem;
-}
-
 #message-dialog::part(footer),
 #message-drawer::part(footer) {
   padding-top: 1rem;
