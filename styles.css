@@ -3,11 +3,12 @@
 }
 
 body {
-  background-color: aliceblue;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  background-color: aliceblue;
+  padding: 2rem;
 }
 
 #date-input {
